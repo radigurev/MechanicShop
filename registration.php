@@ -1,12 +1,19 @@
 <?php
 
-if(isset($_POST["submit"])){
+if(isset($_POST)){
 
 $name = $_POST['user'];
 $email = $_POST['email'];
 $phone = $_POST['number'];
 $password = $_POST['password'];
+
 $choice = $_POST['choice'];
+
+if(empty($choice)) {
+    $choice = 1;
+}else {
+    $choice = 0;
+}
 
 require_once 'dbConnect.php';
 require_once 'functions.php';
