@@ -19,11 +19,22 @@ include_once 'header.php';
     <input type="checkbox" id="check">
     <div class="login form">
       <header>Login</header>
-      <form action="#">
-        <input type="text" placeholder="Enter your email">
-        <input type="password" placeholder="Enter your password">
-        <input type="button" class="button" value="Login">
+      <form action="loginValidation.php" method="post">
+        <input name="email" type="text" placeholder="Enter your email">
+        <input name="password" type="password" placeholder="Enter your password">
+        <input style="background-color: #6B728E" type="submit" name="submit" class="button" value="Login">
       </form>
+
+    <?php  if(isset($_GET["error"])){
+        if($_GET["error"] == "emptyinput"){
+            echo "<p>Попълнете всики полета!</p>";
+        }else if($_GET["error"] == "wrongemail"){
+            echo "<p>Грешен имейл!</p>";
+        }else if($_GET["error"] == "wrongpassword"){
+            echo "<p>Грешна парола!</p>";
+    }
+}
+?>
     </div>
   </div>
 </body>

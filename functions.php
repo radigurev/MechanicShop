@@ -89,6 +89,7 @@ function emptyInputLogin($email, $password){
 }
 
 function loginUser($con, $email, $password){
+    header("location: nigger.php");
     $emailExists = emailExists($con, $email);
 
 if($emailExists === false){
