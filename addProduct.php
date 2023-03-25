@@ -13,6 +13,10 @@ if(isset($_POST)){
         $img = $_POST['image'];
 
         if(emptyInputProduct($productName,$img,$productType,$productPrice) !== false) {
+            // echo $productName." ";
+            // echo $productPrice." ";
+            // echo $productType." ";
+            // echo $img." ";
             header("location: neProduct.php?error=emptyinput");
             exit();
         }

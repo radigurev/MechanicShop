@@ -25,3 +25,16 @@ nav {
 .megamenu {
     background-color: #6B728E!important;
 }
+
+.megamenu a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.megamenu a:hover {
+	text-decoration: underline;
+}
+
+.navbar {
+	z-index: 10;
+}

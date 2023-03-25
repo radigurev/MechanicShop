@@ -26,6 +26,7 @@ include_once 'header.php';
                 <input type="text" name="email" placeholder="email">
                 <input type="text" name="number" placeholder="phone">
                 <input type="password" name="password" placeholder="password">
+                <input type="text" name="address" placeholder="address">
                 <div class="toggle-button-cover">
                     <div class="button-cover">
                         <div class="button r" id="button-1">

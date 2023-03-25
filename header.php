@@ -3,11 +3,10 @@
 session_start();
 ?>
 
-<header>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
   <link href="navbar.css" rel="stylesheet" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/4aa5357101.js" crossorigin="anonymous"></script>
 <!-- <header>
         <nav>
             <a href="homePage.php"><img src="photos/logo.png" class="logo"></img> </a>
@@ -71,21 +70,21 @@ session_start();
 	</button>
 	<div class="collapse navbar-collapse" id="main_nav">
 		<ul class="navbar-nav">
-			<li class="nav-item active"> <a class="nav-link" href="homePage.php">Home </a> </li>
+			<li class="nav-item active"> <a class="nav-link" href="homePage.php"><i class="fa-solid fa-house"></i> Home</a></li>
 			<?php
 				if(isset($_SESSION["useremail"])){
 					if(isset($_SESSION['usertype']) && trim($_SESSION['usertype']) == "1") {
-						echo "<li class='nav-item active'> <a class='nav-link' href='neProduct.php'>Add Product</a></li>";
+						echo "<li class='nav-item active'> <a class='nav-link' href='neProduct.php'><i class='fa-solid fa-plus'></i> Add Product</a></li>";
 					}
 				}
 				?>
 			<li class="nav-item dropdown has-megamenu">
-				<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Mega menu  </a>
+				<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="fa-solid fa-car"></i> Части</a>
 				<div class="dropdown-menu megamenu" role="menu">
 					<div class="row g-3">
 						<div class="col-lg-3 col-6">
 							<div class="col-megamenu">
-								<h6 class="title">Title Menu One</h6>
+								<!-- <h6 class="title">Title Menu One</h6> -->
 								<ul class="list-unstyled">
 									<li><a href="typesOfProducts.php?type=clutch">Съединител</a></li>
 									<li><a href="typesOfProducts.php?type=piston">Бутало</a></li>
@@ -98,7 +97,7 @@ session_start();
 						</div><!-- end col-3 -->
 						<div class="col-lg-3 col-6">
 							<div class="col-megamenu">
-								<h6 class="title">Title Menu Two</h6>
+								<!-- <h6 class="title">Title Menu Two</h6> -->
 								<ul class="list-unstyled">
 									<li><a href="#">Custom Menu</a></li>
 									<li><a href="#">Custom Menu</a></li>
@@ -111,7 +110,7 @@ session_start();
 						</div><!-- end col-3 -->
 						<div class="col-lg-3 col-6">
 							<div class="col-megamenu">
-								<h6 class="title">Title Menu Three</h6>
+								<!-- <h6 class="title">Title Menu Three</h6> -->
 								<ul class="list-unstyled">
 									<li><a href="#">Custom Menu</a></li>
 									<li><a href="#">Custom Menu</a></li>
@@ -124,7 +123,7 @@ session_start();
 						</div>    
 						<div class="col-lg-3 col-6">
 							<div class="col-megamenu">
-								<h6 class="title">Title Menu Four</h6>
+								<!-- <h6 class="title">Title Menu Four</h6> -->
 								<ul class="list-unstyled">
 									<li><a href="#">Custom Menu</a></li>
 									<li><a href="#">Custom Menu</a></li>
@@ -143,11 +142,21 @@ session_start();
       <?php if(empty($_SESSION["useremail"])){ 
         echo "<li class='nav-item'><a class='nav-link' href='login.php'>Вход</a></li>";
         echo "<li class='nav-item'><a class='nav-link' href='register.php'>Регистрация</a></li>";
-      }
+      }else {
+		if(isset($_SESSION['usertype']) && trim($_SESSION['usertype']) == "0") {
+			echo "<li class='nav-item'><a class='nav-link' href='cart.php'><i class='fa-solid fa-cart-shopping'></i> Количка</a></li>";
+		}else if(isset($_SESSION['usertype']) && trim($_SESSION['usertype']) == "1")
+		{
+			echo "<li class='nav-item'><a class='nav-link' href='cart.php'><i class='fa-solid fa-list'></i> Поръчки</a></li>";
+		}
+		echo "<li class='nav-item'><a class='nav-link' href='profile.php'><i class='fa-solid fa-user'></i> Профил</a></li>";
+		echo "<li class='nav-item'><a class='nav-link' href='logout.php'><i class='fa-solid fa-arrow-right-from-bracket'></i> Излез</a></li>";
+	  }
         ?>
 		</ul>
 	</div> <!-- navbar-collapse.// -->
 </div> <!-- container-fluid.// -->
 </nav>
-    </header> 
+	<div class="bg-image"></div>
+
 

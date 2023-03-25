@@ -10,9 +10,9 @@ $password = $_POST['password'];
 $choice = $_POST['choice'];
 
 if(empty($choice)) {
-    $choice = 1;
-}else {
     $choice = 0;
+}else {
+    $choice = 1;
 }
 
 require_once 'dbConnect.php';
