@@ -4,18 +4,22 @@ session_start();
 
 require_once 'dbConnect.php';
 require_once 'functions.php';
-if(isset($_POST["addSubmit"])){
-    if(isset($_SESSION["userid"]) && isset($_SESSION["userName"])){
-        $userName = $_SESSION["userName"];
+if(isset($_POST)){
+    if(isset($_SESSION["userid"])){
         $userId = $_SESSION["userid"];
-        $productType = $_POST['productType'];
-        $productName = $_POST['productName'];
-        $productPrice = $_POST['productPrice'];
+        $productType = $_POST['type'];
+        $productName = $_POST['name'];
+        $productPrice = $_POST['price'];
+        $img = $_POST['image'];
 
-addProduct($con, $userName, $userId, $productType, $productName, $productPrice);
+        if(emptyInputProduct($productName,$img,$productType,$productPrice) !== false) {
+            header("location: neProduct.php?error=emptyinput");
+            exit();
+        }
 
+addProduct($con, $userId, $productType, $productName, $productPrice,$img);
     }   
 }else{
-    header("location: myprofile.php?did't-add");
+    header("location: neProduct.php");
     exit();
 }

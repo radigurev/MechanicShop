@@ -12,8 +12,8 @@
 <?php
 
 include_once 'header.php';
-
 ?>
-   
+        <div class="bg-image"></div>
+
     </body>
 </html>

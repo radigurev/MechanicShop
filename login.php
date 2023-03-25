@@ -15,6 +15,7 @@ include_once 'header.php';
 ?>
 
 <body>
+  <div class="bg-image"></div>
   <div class="container">
     <input type="checkbox" id="check">
     <div class="login form">

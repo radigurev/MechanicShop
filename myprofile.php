@@ -6,8 +6,6 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
-        <title>MYWEBSHIT</title> 
-
     </head>
     <?php
 

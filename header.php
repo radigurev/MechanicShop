@@ -71,7 +71,14 @@ session_start();
 	</button>
 	<div class="collapse navbar-collapse" id="main_nav">
 		<ul class="navbar-nav">
-			<li class="nav-item active"> <a class="nav-link" href="#">Home </a> </li>
+			<li class="nav-item active"> <a class="nav-link" href="homePage.php">Home </a> </li>
+			<?php
+				if(isset($_SESSION["useremail"])){
+					if(isset($_SESSION['usertype']) && trim($_SESSION['usertype']) == "1") {
+						echo "<li class='nav-item active'> <a class='nav-link' href='neProduct.php'>Add Product</a></li>";
+					}
+				}
+				?>
 			<li class="nav-item dropdown has-megamenu">
 				<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Mega menu  </a>
 				<div class="dropdown-menu megamenu" role="menu">
@@ -80,9 +87,9 @@ session_start();
 							<div class="col-megamenu">
 								<h6 class="title">Title Menu One</h6>
 								<ul class="list-unstyled">
-									<li><a href="#">Custom Menu</a></li>
-									<li><a href="#">Custom Menu</a></li>
-									<li><a href="#">Custom Menu</a></li>
+									<li><a href="typesOfProducts.php?type=clutch">Съединител</a></li>
+									<li><a href="typesOfProducts.php?type=piston">Бутало</a></li>
+									<li><a href="typesOfProducts.php?type=pads">Накладки</a></li>
 									<li><a href="#">Custom Menu</a></li>
 									<li><a href="#">Custom Menu</a></li>
 									<li><a href="#">Custom Menu</a></li>

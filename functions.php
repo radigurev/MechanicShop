@@ -1,12 +1,10 @@
 <?php
 function emptyInputSignup($name, $email, $phone, $password){
-    $result= false;
-    if(empty($name) || empty($email) || empty($phone) || empty($password)){
-        $result = true;
-    }else{
-        $result = false;
-    }
-    return $result;
+    return empty($name) || empty($email) || empty($phone) || empty($password);
+}
+
+function emptyInputProduct($name,$img,$type,$price) {
+    return empty($name) || empty($email) || empty($price) || empty($type);
 }
 
 function invalidEmail($email){
@@ -78,18 +76,11 @@ function addToCart($con, $merchName, $prodN, $prodP, $prodID){
 }
 
 
-function emptyInputLogin($email, $password){
-    $result= false;
-    if(empty($email) || empty($password)){
-        $result = true;
-    }else{
-        $result = false;
-    }
-    return $result;
+function emptyInputLogin($email, $password) {
+    return empty($email) || empty($password);
 }
 
 function loginUser($con, $email, $password){
-    header("location: nigger.php");
     $emailExists = emailExists($con, $email);
 
 if($emailExists === false){
@@ -97,7 +88,7 @@ if($emailExists === false){
     header("location: login.php?error=wrongemail");
       exit();
 }
-$s = " SELECT * FROM `users` WHERE `Email` = '$email' && `Password` = '$password';";
+$s = "SELECT * FROM `users` WHERE `Email` = '$email' && `Password` = '$password';";
 
 $result = mysqli_query($con, $s);
 
@@ -106,7 +97,7 @@ $num = mysqli_num_rows($result);
 if($num === 0){
     header("location: login.php?error=profiledoesntexist");
     exit();
-}else if($num === 1){
+}else {
     session_start();
     $_SESSION["userid"]=$emailExists["Id"];
     $_SESSION["useremail"]=$emailExists["Email"];
@@ -120,20 +111,20 @@ if($num === 0){
 
 }
 
-function addProduct($con, $userName, $userId, $productType, $productName, $productPrice){
-    $sql = "INSERT INTO `items` (`userName`,`id`, `type`, `productName`, `productPrice`) VALUES (?, ?, ?, ?, ?);";
+function addProduct($con, $userId, $productType, $productName, $productPrice,$img) {
+    $sql = "INSERT INTO `items` (`userId`, `type`, `productName`, `productPrice`,`image`) VALUES (?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($con);
+
     if(!mysqli_stmt_prepare($stmt, $sql)){
       header("location: myprofile.php?error=stmtfailed");
       exit();
     }
 
-
-    mysqli_stmt_bind_param($stmt, "sssss", $userName, $userId, $productType, $productName, $productPrice);
+    mysqli_stmt_bind_param($stmt, "sssss", $userId, $productType, $productName, $productPrice, $img);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     
-    header("location: myprofile.php?profile=add");
+    header("location: neProduct.php");
 
       exit();
 }
